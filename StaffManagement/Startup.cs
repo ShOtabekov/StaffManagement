@@ -33,30 +33,17 @@ namespace StaffManagement
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("MiddleWaredan salomlar \n");
-                await next();
-            }
-            );
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("2 MiddleWaredan salomlar ");
-                await next();
 
-            }
-            ); 
+
+            /*app.UseDefaultFiles();
+            app.UseStaticFiles();*/
+            app.UseFileServer();
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Main page ");
-                });
-
-                endpoints.MapGet("/User", async context =>
-                {
-                    await context.Response.WriteAsync("User page");
                 });
             });
         }
