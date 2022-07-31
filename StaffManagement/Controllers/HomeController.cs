@@ -1,15 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace StaffManagement.Controllers
 {
-    public class HomeController
+    public class HomeController:Controller
     {
-        public string  Index()
+
+        public ViewResult Index()
         {
-            return "Home Controllerdan salomlar !";
+            return View(); 
+        }
+        public JsonResult  Data()
+        {
+            return Json(new { id=17, fistname="Jaloliddin", lastname="Rumiy"});
         }
     }
 }
